@@ -7,7 +7,7 @@ A Django web application designed to help emergency dispatch centers instantly i
 ## Technical Stack
 - **Backend:** Python 3.12+, Django 5.0+, SQLite
 - **Frontend:** HTML5, CSS3, Bootstrap 5, Leaflet.js, OpenStreetMap tiles, Vanilla Javascript (Fetch API)
-- **External Geo Libraries:** None. Distance calculation (Haversine) is coded manually.
+- **External Geo Libraries:** None. Distance calculation (Haversine) and spatial indexing (KD-Tree) are coded manually from scratch in Python.
 
 ---
 
@@ -92,7 +92,10 @@ Whenever a new dataset is uploaded, all previous service units and dataset-sourc
 ### 2. Equidistant Tie-Breaking Rule
 When searching for the nearest unit, if multiple units are equidistant (defined by a coordinate/distance threshold epsilon of `1e-6 km` or `1 millimeter`), the algorithm resolves the tie by returning the unit with the **lowest primary key** (first inserted). This ensures stable, deterministic outcome selection.
 
-### 3. Linear Scan Complexity vs Spatial Indexing
-Currently, the algorithm scans all available units in $O(N)$ linear time. This works perfectly for small-to-medium datasets. At massive production scales (e.g., hundreds of thousands of units):
-- **KD-Tree or BallTree:** A local spatial index could reduce lookup times to average $O(\log N)$ by partition pruning.
-- **PostgreSQL / PostGIS:** Using spatial indices (R-Tree-based `GIST`) allows spatial database indexing for immediate, scale-free nearest-neighbor queries via the `<->` operator.
+### 3. KD-Tree Spatial Indexing
+To handle large datasets efficiently, the nearest-neighbor search utilizes a custom KD-Tree data structure instead of a linear scan. 
+- The KD-Tree splits coordinates iteratively by latitude and longitude, pruning distant search branches in average $O(\log N)$ time.
+- Haversine distance bounds are used accurately during pruning to account for the Earth's curvature.
+
+### 4. Search History & Auditing
+Every successful dispatch request is automatically recorded in the `SearchHistory` database model. This allows administrators to audit incidents (via the Django Admin panel) and track which service unit was dispatched, along with the precise distance calculation and timestamp.
