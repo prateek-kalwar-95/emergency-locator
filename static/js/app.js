@@ -1,4 +1,4 @@
-// Emergency Response Locator - Client Application Script
+// Intelligent Emergency Dispatch - Client Application Script
 
 document.addEventListener('DOMContentLoaded', () => {
     // ----------------------------------------------------

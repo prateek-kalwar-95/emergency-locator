@@ -11,7 +11,7 @@ from locator import services
 @ensure_csrf_cookie
 def home(request):
     """
-    Renders the Emergency Response Locator dashboard homepage.
+    Renders the Intelligent Emergency Dispatch dashboard homepage.
     """
     ambulances = ServiceUnit.objects.filter(unit_type='Ambulance').count()
     fire_stations = ServiceUnit.objects.filter(unit_type='Fire').count()

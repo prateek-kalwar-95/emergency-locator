@@ -1,4 +1,4 @@
-# Emergency Response Locator MVP
+# Intelligent Emergency Dispatch MVP
 
 A Django web application designed to help emergency dispatch centers instantly identify the nearest available emergency service unit (Ambulance, Fire Station, or Police Vehicle) to an incident location. It utilizes an interactive Leaflet.js map, dynamic metric cards, and a custom implementation of the Haversine formula to compute great-circle distances.
 
