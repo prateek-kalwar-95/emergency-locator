@@ -1,0 +1,28 @@
+# Emergency Response Dataset - Kolkata Region
+# This file contains emergency response units and incident locations.
+# Empty lines and lines starting with # (comments) are skipped by the parser.
+
+# Units
+# Format: unit_id, unit_type, latitude, longitude, status
+# Valid unit_type: Ambulance, Fire, Police (case-insensitive)
+# Valid status: Available, Busy, Maintenance (case-insensitive)
+
+A1,Ambulance,22.5726,88.3639,Available
+A2,Ambulance,22.5850,88.3820,Busy
+A3,Ambulance,22.5600,88.3450,Maintenance
+A4,Ambulance,22.5750,88.3680,Available
+F1,Fire,22.5650,88.3550,Available
+F2,Fire,22.5920,88.3980,Maintenance
+F3,Fire,22.5500,88.3300,Available
+P1,Police,22.5690,88.3600,Available
+P2,Police,22.5780,88.3520,Busy
+P3,Police,22.5810,88.3750,Available
+
+# Incidents
+# Format: name, latitude, longitude
+
+Hospital,22.5710,88.3605
+School,22.5600,88.3520
+Mall,22.5750,88.3660
+Howrah Station,22.5830,88.3420
+Victoria Memorial,22.5448,88.3425

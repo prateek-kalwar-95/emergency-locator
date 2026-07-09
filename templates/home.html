@@ -1,0 +1,268 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Emergency Response Locator - Dashboard{% endblock %}
+
+{% block content %}
+<div class="row g-4 mb-4">
+    <!-- Page Title -->
+    <div class="col-12 d-flex justify-content-between align-items-center">
+        <div>
+            <h1 class="h2 fw-bold text-dark font-outfit mb-1">Emergency Dispatch Dashboard</h1>
+            <p class="text-muted font-inter mb-0">Identify the closest emergency service unit in real time using spatial coordination.</p>
+        </div>
+        <div class="text-end">
+            <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-2 rounded-pill font-inter fw-semibold">
+                <i class="bi bi-clock-history me-1"></i> Live Tracking Enabled
+            </span>
+        </div>
+    </div>
+</div>
+
+<!-- Dashboard Stats -->
+<div class="row g-3 mb-4">
+    <div class="col-md-2 col-sm-6">
+        <div class="card h-100 border-0 shadow-sm stat-card bg-white">
+            <div class="card-body text-center py-3">
+                <div class="bg-primary-subtle text-primary rounded-circle mx-auto mb-2 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                    <i class="bi bi-truck-front-fill fs-4"></i>
+                </div>
+                <h6 class="text-muted font-inter fw-medium mb-1">Ambulances</h6>
+                <h3 class="fw-bold text-dark font-outfit mb-0" id="stat-ambulances">{{ ambulances }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2 col-sm-6">
+        <div class="card h-100 border-0 shadow-sm stat-card bg-white">
+            <div class="card-body text-center py-3">
+                <div class="bg-danger-subtle text-danger rounded-circle mx-auto mb-2 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                    <i class="bi bi-fire fs-4"></i>
+                </div>
+                <h6 class="text-muted font-inter fw-medium mb-1">Fire Stations</h6>
+                <h3 class="fw-bold text-dark font-outfit mb-0" id="stat-fire">{{ fire_stations }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2 col-sm-6">
+        <div class="card h-100 border-0 shadow-sm stat-card bg-white">
+            <div class="card-body text-center py-3">
+                <div class="bg-warning-subtle text-warning rounded-circle mx-auto mb-2 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                    <i class="bi bi-shield-shaded fs-4"></i>
+                </div>
+                <h6 class="text-muted font-inter fw-medium mb-1">Police Units</h6>
+                <h3 class="fw-bold text-dark font-outfit mb-0" id="stat-police">{{ police_units }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="card h-100 border-0 shadow-sm stat-card bg-white">
+            <div class="card-body text-center py-3">
+                <div class="bg-success-subtle text-success rounded-circle mx-auto mb-2 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                    <i class="bi bi-check-circle-fill fs-4"></i>
+                </div>
+                <h6 class="text-muted font-inter fw-medium mb-1">Units (Avail / Busy)</h6>
+                <h3 class="fw-bold text-dark font-outfit mb-0">
+                    <span id="stat-available" class="text-success">{{ available_units }}</span>
+                    <span class="text-muted fs-5">/</span>
+                    <span id="stat-non-available" class="text-secondary fs-5">{{ non_available_units }}</span>
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-12">
+        <div class="card h-100 border-0 shadow-sm stat-card bg-white">
+            <div class="card-body text-center py-3">
+                <div class="bg-info-subtle text-info rounded-circle mx-auto mb-2 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                    <i class="bi bi-geo-alt-fill fs-4"></i>
+                </div>
+                <h6 class="text-muted font-inter fw-medium mb-1">Incidents Loaded</h6>
+                <h3 class="fw-bold text-dark font-outfit mb-0" id="stat-incidents">{{ dataset_incidents }}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <!-- Left panel: Controls -->
+    <div class="col-lg-4">
+        
+        <!-- Upload dataset card -->
+        <div class="card border-0 shadow-sm mb-4">
+            <div class="card-header bg-white border-0 pt-4 pb-0">
+                <h5 class="fw-bold text-dark font-outfit mb-0">
+                    <i class="bi bi-cloud-arrow-up text-primary me-2"></i>Upload Dataset
+                </h5>
+            </div>
+            <div class="card-body">
+                <form id="upload-form" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="dataset_file" class="form-label text-muted small fw-medium">Select plain text dataset (.txt)</label>
+                        <input type="file" name="dataset_file" id="dataset_file" class="form-control" accept=".txt" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 font-inter py-2 fw-semibold" id="upload-btn">
+                        <span class="spinner-border spinner-border-sm me-1 d-none" id="upload-spinner" role="status" aria-hidden="true"></span>
+                        Upload & Populate
+                    </button>
+                </form>
+                
+                <!-- Upload status alerts -->
+                <div id="upload-alert" class="alert alert-dismissible mt-3 d-none" role="alert">
+                    <span id="upload-alert-message"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+                <!-- Warnings logs -->
+                <div id="warnings-container" class="mt-3 d-none">
+                    <div class="d-flex align-items-center mb-1">
+                        <i class="bi bi-exclamation-triangle-fill text-warning me-2"></i>
+                        <span class="fw-semibold text-warning-emphasis small">Warnings / Skipped Rows:</span>
+                    </div>
+                    <div class="bg-warning-subtle text-warning-emphasis border border-warning-subtle rounded p-2 overflow-y-scroll small" style="max-height: 150px;" id="warnings-list">
+                        <!-- warnings injected here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Find nearest unit card -->
+        <div class="card border-0 shadow-sm mb-4">
+            <div class="card-header bg-white border-0 pt-4 pb-0">
+                <h5 class="fw-bold text-dark font-outfit mb-0">
+                    <i class="bi bi-search text-danger me-2"></i>Find Nearest Unit
+                </h5>
+            </div>
+            <div class="card-body">
+                <!-- Source Toggle -->
+                <div class="mb-3">
+                    <label class="form-label text-muted small fw-medium d-block">Incident Location Source</label>
+                    <div class="btn-group w-100" role="group">
+                        <input type="radio" class="btn-check" name="incident_source" id="source-dataset" value="dataset" checked>
+                        <label class="btn btn-outline-secondary font-inter fw-medium py-2" for="source-dataset">Choose from Dataset</label>
+                        
+                        <input type="radio" class="btn-check" name="incident_source" id="source-manual" value="manual">
+                        <label class="btn btn-outline-secondary font-inter fw-medium py-2" for="source-manual">Enter Coordinates</label>
+                    </div>
+                </div>
+
+                <!-- Form Controls -->
+                <form id="search-form">
+                    {% csrf_token %}
+                    
+                    <!-- Mode A: Dataset selection -->
+                    <div id="dataset-group" class="mb-3">
+                        <label for="incident-select" class="form-label text-muted small fw-medium">Select Incident</label>
+                        <select id="incident-select" class="form-select font-inter py-2">
+                            <option value="">-- Choose Incident --</option>
+                            <!-- filled dynamically -->
+                        </select>
+                    </div>
+
+                    <!-- Mode B: Manual entry -->
+                    <div id="manual-group" class="mb-3 d-none">
+                        <div class="alert alert-info py-2 px-3 mb-3 small d-flex align-items-start">
+                            <i class="bi bi-info-circle-fill me-2 mt-1 fs-6"></i>
+                            <div>
+                                Click directly on the map to automatically set coordinates, or type them below.
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <label for="manual-name" class="form-label text-muted small fw-medium">Incident Name (Optional)</label>
+                            <input type="text" id="manual-name" class="form-control font-inter py-2" placeholder="e.g. Traffic Collision">
+                        </div>
+                        <div class="row g-2">
+                            <div class="col-6">
+                                <label for="manual-lat" class="form-label text-muted small fw-medium">Latitude</label>
+                                <input type="number" id="manual-lat" class="form-control font-inter py-2" step="any" min="-90" max="90" placeholder="e.g. 22.5710">
+                            </div>
+                            <div class="col-6">
+                                <label for="manual-lon" class="form-label text-muted small fw-medium">Longitude</label>
+                                <input type="number" id="manual-lon" class="form-control font-inter py-2" step="any" min="-180" max="180" placeholder="e.g. 88.3605">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service dropdown -->
+                    <div class="mb-3">
+                        <label for="service-select" class="form-label text-muted small fw-medium">Emergency Service Type</label>
+                        <select id="service-select" class="form-select font-inter py-2">
+                            <option value="Any" selected>Any (Available Nearest)</option>
+                            <option value="Ambulance">Ambulance</option>
+                            <option value="Fire">Fire Station</option>
+                            <option value="Police">Police Unit</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-danger w-100 font-inter py-2 fw-semibold" id="search-btn">
+                        <span class="spinner-border spinner-border-sm me-1 d-none" id="search-spinner" role="status" aria-hidden="true"></span>
+                        Find Nearest Unit
+                    </button>
+                </form>
+                
+                <div id="search-alert" class="alert alert-danger mt-3 d-none" role="alert"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Right panel: Map & Results -->
+    <div class="col-lg-8" id="map-section">
+        
+        <!-- Result Card -->
+        <div id="result-card" class="card border-0 shadow-sm border-start border-4 border-primary mb-4 d-none fade-in">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="card-title fw-bold text-dark font-outfit mb-0">Nearest Unit Dispatched</h5>
+                    <span class="badge bg-primary text-white rounded-pill px-3 py-1 font-inter fs-6 fw-semibold" id="res-distance">0.00 km</span>
+                </div>
+                <div class="row g-3 text-start">
+                    <div class="col-sm-6">
+                        <div class="mb-2">
+                            <span class="text-muted small d-block font-inter">Unit Code</span>
+                            <span class="fw-bold text-dark fs-5 font-outfit" id="res-unit-id">-</span>
+                        </div>
+                        <div class="mb-2">
+                            <span class="text-muted small d-block font-inter">Service Type</span>
+                            <span class="fw-semibold text-secondary font-inter" id="res-unit-type">-</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="mb-2">
+                            <span class="text-muted small d-block font-inter">Coordinates</span>
+                            <span class="font-monospace text-dark small" id="res-unit-coords">-</span>
+                        </div>
+                        <div class="mb-2">
+                            <span class="text-muted small d-block font-inter">Status</span>
+                            <span class="badge bg-success-subtle text-success" id="res-unit-status">Available</span>
+                        </div>
+                    </div>
+                    <div class="col-12 border-top pt-2 mt-2">
+                        <span class="text-muted small d-block font-inter">Target Incident Location</span>
+                        <span class="fw-semibold text-dark font-inter" id="res-incident-label">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Map Card -->
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-2">
+                <div id="map" class="rounded" style="height: 520px; min-height: 400px; z-index: 1;"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<!-- Pass django endpoints directly to the frontend application script -->
+<script>
+    window.LOCATOR_URLS = {
+        upload: "{% url 'locator:upload_dataset' %}",
+        incidents: "{% url 'locator:list_incidents' %}",
+        units: "{% url 'locator:list_units' %}",
+        findNearest: "{% url 'locator:find_nearest' %}"
+    };
+</script>
+{% endblock %}

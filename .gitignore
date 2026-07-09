@@ -1,0 +1,18 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Database
+db.sqlite3
+
+# Local static & uploads
+staticfiles/
+uploads/*
+!uploads/.gitkeep
+
+# IDEs
+.vscode/
+.idea/
+.DS_Store
+.venv/
