@@ -43,3 +43,18 @@ class Incident(models.Model):
 
     def __str__(self):
         return f"{self.name or 'Manual Incident'} ({self.latitude}, {self.longitude})"
+
+
+class SearchHistory(models.Model):
+    """
+    Records a history of incident searches and the unit assigned.
+    """
+    incident_lat = models.FloatField()
+    incident_lon = models.FloatField()
+    assigned_unit = models.ForeignKey(ServiceUnit, on_delete=models.SET_NULL, null=True, blank=True)
+    distance_km = models.FloatField(null=True, blank=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        unit_info = self.assigned_unit.unit_id if self.assigned_unit else "None"
+        return f"Incident at ({self.incident_lat}, {self.incident_lon}) -> Unit: {unit_info} ({self.distance_km} km)"

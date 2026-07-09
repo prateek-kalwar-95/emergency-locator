@@ -41,6 +41,32 @@ def haversine(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     return R * c
 
 
+class KDTreeNode:
+    def __init__(self, unit, left=None, right=None, axis=0):
+        self.unit = unit
+        self.left = left
+        self.right = right
+        self.axis = axis
+
+def build_kdtree(units, depth=0):
+    if not units:
+        return None
+    axis = depth % 2
+    
+    # Sort units based on the current axis (0 for lat, 1 for lon)
+    if axis == 0:
+        units.sort(key=lambda u: (u.latitude, u.id))
+    else:
+        units.sort(key=lambda u: (u.longitude, u.id))
+        
+    median = len(units) // 2
+    return KDTreeNode(
+        unit=units[median],
+        left=build_kdtree(units[:median], depth + 1),
+        right=build_kdtree(units[median + 1:], depth + 1),
+        axis=axis
+    )
+
 def find_nearest_unit(
     incident_lat: float, 
     incident_lon: float, 
@@ -48,42 +74,54 @@ def find_nearest_unit(
 ) -> Tuple[Optional[ServiceUnit], float]:
     """
     Scans the database for Available service units and returns the nearest one 
-    to the incident location based on the Haversine distance.
-    
-    Rules:
-      - Ignores units with 'Busy' or 'Maintenance' status.
-      - If service_type is 'Any', searches all Available units.
-      - Otherwise filters to Available units matching service_type.
-      - Tie-break: If multiple units are within an epsilon of 1e-6 km (1 millimeter),
-        we prefer the one with the lowest primary key (first inserted) by utilizing
-        increasing primary key order during candidate evaluation.
-        
-    Returns:
-      Tuple of (nearest_unit_object, distance_km). 
-      If no unit is found, returns (None, float('inf')).
+    to the incident location using KD-Tree spatial indexing with Haversine distance.
     """
-    # Order by ID to ensure stable tie-breaker (lowest primary key / first inserted)
-    queryset = ServiceUnit.objects.filter(status='Available').order_by('id')
+    queryset = ServiceUnit.objects.filter(status='Available')
 
     if service_type != "Any":
         queryset = queryset.filter(unit_type=service_type)
+
+    units = list(queryset)
+    if not units:
+        return None, float('inf')
+
+    # Build KD-Tree from available units
+    root = build_kdtree(units)
 
     best_unit: Optional[ServiceUnit] = None
     min_distance = float('inf')
     epsilon = 1e-6  # 1 millimeter epsilon in km
 
-    for unit in queryset:
-        dist = haversine(incident_lat, incident_lon, unit.latitude, unit.longitude)
+    def search_kdtree(node):
+        nonlocal best_unit, min_distance
+        if node is None:
+            return
         
-        # If the unit is strictly closer (by at least epsilon), update best_unit.
-        # If the distance is within epsilon, they are considered equidistant.
-        # Since the queryset is sorted by primary key asc, the earlier unit (with lower ID)
-        # is already best_unit, so we do not overwrite it.
+        # Calculate distance to current node
+        dist = haversine(incident_lat, incident_lon, node.unit.latitude, node.unit.longitude)
+        
         if dist < min_distance - epsilon:
             min_distance = dist
-            best_unit = unit
+            best_unit = node.unit
         elif abs(dist - min_distance) < epsilon:
-            # Equidistant - keep the unit with the lower primary key
-            pass
+            if best_unit is None or node.unit.id < best_unit.id:
+                best_unit = node.unit
+                
+        # Determine which branch to search first
+        if node.axis == 0:
+            diff = incident_lat - node.unit.latitude
+            hyperplane_dist = haversine(incident_lat, incident_lon, node.unit.latitude, incident_lon)
+        else:
+            diff = incident_lon - node.unit.longitude
+            hyperplane_dist = haversine(incident_lat, incident_lon, incident_lat, node.unit.longitude)
+            
+        first, second = (node.left, node.right) if diff < 0 else (node.right, node.left)
+        
+        search_kdtree(first)
+        
+        # If the hypersphere intersects the hyperplane, check the other side
+        if hyperplane_dist < min_distance:
+            search_kdtree(second)
 
+    search_kdtree(root)
     return best_unit, min_distance

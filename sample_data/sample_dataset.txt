@@ -7,22 +7,557 @@
 # Valid unit_type: Ambulance, Fire, Police (case-insensitive)
 # Valid status: Available, Busy, Maintenance (case-insensitive)
 
-A1,Ambulance,22.5726,88.3639,Available
-A2,Ambulance,22.5850,88.3820,Busy
-A3,Ambulance,22.5600,88.3450,Maintenance
-A4,Ambulance,22.5750,88.3680,Available
-F1,Fire,22.5650,88.3550,Available
-F2,Fire,22.5920,88.3980,Maintenance
-F3,Fire,22.5500,88.3300,Available
-P1,Police,22.5690,88.3600,Available
-P2,Police,22.5780,88.3520,Busy
-P3,Police,22.5810,88.3750,Available
+F1,Fire,22.5842,88.3047,Available
+P2,Police,22.4626,88.4357,Available
+F3,Fire,22.6588,88.3182,Busy
+P4,Police,22.6687,88.3267,Maintenance
+P5,Police,22.689,88.3206,Busy
+P6,Police,22.6426,88.3746,Available
+F7,Fire,22.5964,88.2925,Busy
+A8,Ambulance,22.485,88.4115,Busy
+P9,Police,22.4504,88.4846,Available
+F10,Fire,22.543,88.2999,Busy
+P11,Police,22.4791,88.3062,Available
+F12,Fire,22.6335,88.4566,Available
+F13,Fire,22.6381,88.3286,Busy
+F14,Fire,22.624,88.3665,Available
+P15,Police,22.5993,88.4711,Available
+F16,Fire,22.602,88.4708,Available
+A17,Ambulance,22.4999,88.4302,Maintenance
+A18,Ambulance,22.5103,88.3656,Available
+F19,Fire,22.5243,88.4239,Busy
+F20,Fire,22.6108,88.4922,Available
+A21,Ambulance,22.5822,88.2755,Busy
+P22,Police,22.6034,88.431,Available
+A23,Ambulance,22.5812,88.3216,Available
+F24,Fire,22.6705,88.447,Available
+P25,Police,22.6654,88.403,Available
+F26,Fire,22.5917,88.2933,Available
+A27,Ambulance,22.5008,88.352,Available
+P28,Police,22.4688,88.3398,Busy
+P29,Police,22.6178,88.4235,Available
+P30,Police,22.5312,88.3079,Available
+A31,Ambulance,22.4684,88.4524,Busy
+P32,Police,22.4937,88.4786,Busy
+A33,Ambulance,22.4715,88.2851,Available
+A34,Ambulance,22.552,88.2856,Available
+A35,Ambulance,22.5716,88.4196,Busy
+F36,Fire,22.5719,88.3942,Busy
+A37,Ambulance,22.5322,88.4387,Available
+P38,Police,22.6935,88.4514,Busy
+F39,Fire,22.6917,88.3259,Busy
+F40,Fire,22.5699,88.2788,Available
+P41,Police,22.5811,88.2602,Available
+A42,Ambulance,22.6927,88.3143,Busy
+A43,Ambulance,22.6788,88.4228,Busy
+F44,Fire,22.6811,88.3276,Available
+P45,Police,22.6102,88.3171,Busy
+F46,Fire,22.5393,88.3321,Busy
+P47,Police,22.4784,88.3598,Available
+A48,Ambulance,22.5736,88.341,Available
+A49,Ambulance,22.6144,88.3021,Available
+P50,Police,22.6515,88.4506,Available
+F51,Fire,22.6457,88.4656,Busy
+A52,Ambulance,22.5912,88.329,Maintenance
+P53,Police,22.6227,88.4928,Available
+A54,Ambulance,22.5529,88.3431,Maintenance
+P55,Police,22.5872,88.4168,Busy
+F56,Fire,22.6759,88.2851,Available
+P57,Police,22.5034,88.395,Busy
+A58,Ambulance,22.6844,88.4043,Available
+F59,Fire,22.6917,88.3448,Available
+A60,Ambulance,22.516,88.3724,Available
+A61,Ambulance,22.6486,88.2671,Available
+A62,Ambulance,22.4629,88.2555,Busy
+A63,Ambulance,22.6211,88.4408,Available
+P64,Police,22.5773,88.3593,Available
+P65,Police,22.5332,88.2602,Available
+F66,Fire,22.5366,88.4885,Busy
+F67,Fire,22.5236,88.4883,Available
+P68,Police,22.6121,88.354,Busy
+F69,Fire,22.4564,88.3887,Busy
+F70,Fire,22.4593,88.4246,Available
+F71,Fire,22.6381,88.3599,Available
+A72,Ambulance,22.5961,88.3416,Available
+A73,Ambulance,22.4677,88.3497,Busy
+P74,Police,22.4912,88.4253,Busy
+F75,Fire,22.6341,88.4893,Available
+P76,Police,22.607,88.3289,Available
+F77,Fire,22.6486,88.3803,Busy
+P78,Police,22.5839,88.273,Available
+F79,Fire,22.4524,88.3903,Available
+A80,Ambulance,22.4731,88.3148,Busy
+F81,Fire,22.6992,88.3931,Available
+F82,Fire,22.5384,88.2583,Busy
+F83,Fire,22.6345,88.4953,Busy
+P84,Police,22.6508,88.2589,Busy
+P85,Police,22.5175,88.4063,Available
+F86,Fire,22.6207,88.4133,Available
+A87,Ambulance,22.4782,88.3749,Available
+P88,Police,22.5628,88.3554,Available
+A89,Ambulance,22.5525,88.4759,Busy
+P90,Police,22.6507,88.2737,Available
+F91,Fire,22.6073,88.4613,Available
+F92,Fire,22.6323,88.2658,Available
+A93,Ambulance,22.5391,88.3058,Available
+A94,Ambulance,22.6449,88.4448,Available
+P95,Police,22.6915,88.4168,Available
+A96,Ambulance,22.6295,88.4408,Available
+P97,Police,22.5414,88.3321,Available
+F98,Fire,22.5356,88.4666,Available
+P99,Police,22.4893,88.4066,Available
+A100,Ambulance,22.5709,88.4347,Available
+F101,Fire,22.5395,88.3694,Available
+A102,Ambulance,22.464,88.4194,Available
+P103,Police,22.5041,88.2892,Busy
+P104,Police,22.6242,88.425,Busy
+F105,Fire,22.6808,88.2612,Maintenance
+F106,Fire,22.5415,88.3828,Available
+A107,Ambulance,22.4892,88.2966,Available
+F108,Fire,22.537,88.2647,Busy
+P109,Police,22.6004,88.2683,Available
+A110,Ambulance,22.6402,88.436,Available
+A111,Ambulance,22.527,88.4049,Available
+F112,Fire,22.6502,88.427,Maintenance
+P113,Police,22.4929,88.3615,Available
+P114,Police,22.6276,88.2854,Available
+F115,Fire,22.4965,88.3355,Available
+F116,Fire,22.5366,88.3788,Busy
+F117,Fire,22.5611,88.3996,Maintenance
+P118,Police,22.6266,88.4128,Busy
+F119,Fire,22.6144,88.4211,Maintenance
+A120,Ambulance,22.4841,88.2967,Available
+P121,Police,22.6268,88.4125,Busy
+F122,Fire,22.5039,88.3437,Busy
+P123,Police,22.5587,88.4545,Busy
+P124,Police,22.693,88.4678,Available
+A125,Ambulance,22.4977,88.3712,Available
+A126,Ambulance,22.6877,88.463,Available
+P127,Police,22.6251,88.258,Available
+A128,Ambulance,22.5109,88.4945,Maintenance
+A129,Ambulance,22.4638,88.348,Maintenance
+F130,Fire,22.6427,88.3558,Busy
+P131,Police,22.6013,88.2662,Available
+P132,Police,22.6826,88.3993,Available
+F133,Fire,22.5593,88.3881,Busy
+A134,Ambulance,22.6077,88.3567,Busy
+P135,Police,22.638,88.337,Busy
+P136,Police,22.5708,88.4344,Busy
+A137,Ambulance,22.4739,88.3039,Available
+P138,Police,22.5468,88.4062,Busy
+P139,Police,22.5001,88.4703,Available
+F140,Fire,22.4881,88.4192,Available
+F141,Fire,22.6721,88.2614,Available
+A142,Ambulance,22.4549,88.3937,Available
+A143,Ambulance,22.6994,88.3822,Available
+A144,Ambulance,22.47,88.2882,Busy
+P145,Police,22.6546,88.4596,Available
+A146,Ambulance,22.6986,88.435,Busy
+A147,Ambulance,22.565,88.3271,Available
+A148,Ambulance,22.6967,88.4629,Busy
+A149,Ambulance,22.699,88.3099,Available
+P150,Police,22.5667,88.3846,Busy
+P151,Police,22.4944,88.3918,Busy
+P152,Police,22.6737,88.3116,Busy
+A153,Ambulance,22.6463,88.4173,Busy
+P154,Police,22.4588,88.2988,Busy
+F155,Fire,22.5148,88.3681,Maintenance
+A156,Ambulance,22.464,88.4734,Available
+P157,Police,22.467,88.3017,Busy
+F158,Fire,22.6158,88.2511,Maintenance
+A159,Ambulance,22.5353,88.3781,Available
+P160,Police,22.5638,88.3298,Busy
+P161,Police,22.6623,88.4915,Busy
+P162,Police,22.6459,88.4836,Maintenance
+P163,Police,22.5889,88.3485,Available
+A164,Ambulance,22.5993,88.3505,Available
+F165,Fire,22.4838,88.4033,Busy
+F166,Fire,22.6145,88.2652,Busy
+F167,Fire,22.527,88.3707,Available
+F168,Fire,22.663,88.3323,Available
+F169,Fire,22.6013,88.4518,Available
+A170,Ambulance,22.6576,88.3418,Available
+F171,Fire,22.6681,88.4065,Available
+P172,Police,22.6541,88.4807,Available
+F173,Fire,22.5463,88.3247,Busy
+F174,Fire,22.4614,88.3916,Maintenance
+F175,Fire,22.4501,88.2922,Busy
+A176,Ambulance,22.6023,88.4746,Busy
+F177,Fire,22.4667,88.378,Available
+A178,Ambulance,22.4639,88.3992,Busy
+A179,Ambulance,22.6272,88.3854,Available
+F180,Fire,22.6113,88.3381,Available
+A181,Ambulance,22.4865,88.4624,Maintenance
+P182,Police,22.5428,88.2964,Available
+F183,Fire,22.5494,88.3765,Available
+F184,Fire,22.5975,88.451,Available
+A185,Ambulance,22.513,88.3405,Available
+P186,Police,22.4792,88.3161,Available
+P187,Police,22.6361,88.339,Available
+P188,Police,22.5361,88.3055,Available
+P189,Police,22.539,88.3651,Available
+A190,Ambulance,22.5849,88.3625,Available
+F191,Fire,22.5232,88.4319,Busy
+A192,Ambulance,22.6892,88.386,Busy
+P193,Police,22.5677,88.3529,Available
+P194,Police,22.4746,88.4198,Available
+F195,Fire,22.5332,88.4815,Maintenance
+A196,Ambulance,22.6298,88.3305,Available
+F197,Fire,22.4913,88.3819,Busy
+A198,Ambulance,22.5168,88.4806,Available
+A199,Ambulance,22.6273,88.3164,Busy
+F200,Fire,22.4877,88.3873,Available
+P201,Police,22.5063,88.4493,Available
+P202,Police,22.5482,88.2625,Available
+P203,Police,22.6563,88.4078,Available
+P204,Police,22.6528,88.307,Maintenance
+P205,Police,22.4731,88.416,Available
+P206,Police,22.5287,88.3686,Available
+P207,Police,22.5369,88.3613,Available
+F208,Fire,22.6972,88.4017,Available
+F209,Fire,22.6539,88.2847,Available
+A210,Ambulance,22.6403,88.485,Available
+P211,Police,22.5658,88.3071,Available
+P212,Police,22.4542,88.2712,Busy
+F213,Fire,22.689,88.2621,Available
+P214,Police,22.6535,88.2521,Available
+P215,Police,22.4523,88.3945,Available
+A216,Ambulance,22.5622,88.3129,Available
+F217,Fire,22.5724,88.4359,Busy
+P218,Police,22.6533,88.4861,Available
+A219,Ambulance,22.5571,88.4668,Busy
+A220,Ambulance,22.6266,88.4062,Busy
+P221,Police,22.6282,88.4786,Busy
+F222,Fire,22.6233,88.4009,Busy
+A223,Ambulance,22.4875,88.4238,Available
+F224,Fire,22.5376,88.3027,Busy
+F225,Fire,22.6516,88.3725,Busy
+F226,Fire,22.5874,88.3756,Available
+F227,Fire,22.6736,88.3327,Available
+P228,Police,22.6375,88.3822,Available
+P229,Police,22.5958,88.4511,Available
+A230,Ambulance,22.5502,88.4143,Available
+P231,Police,22.4659,88.486,Busy
+P232,Police,22.5974,88.2852,Available
+F233,Fire,22.4512,88.2961,Maintenance
+F234,Fire,22.5105,88.2694,Available
+F235,Fire,22.4776,88.3758,Available
+A236,Ambulance,22.5878,88.3163,Available
+P237,Police,22.4931,88.4089,Busy
+F238,Fire,22.6671,88.352,Maintenance
+F239,Fire,22.4888,88.4201,Maintenance
+P240,Police,22.6783,88.4298,Busy
+F241,Fire,22.557,88.4219,Available
+P242,Police,22.5253,88.4292,Available
+P243,Police,22.5754,88.4789,Busy
+A244,Ambulance,22.6717,88.4235,Busy
+P245,Police,22.628,88.4093,Available
+A246,Ambulance,22.5042,88.3262,Maintenance
+F247,Fire,22.6437,88.4866,Busy
+F248,Fire,22.5529,88.4687,Maintenance
+A249,Ambulance,22.5919,88.3861,Busy
+F250,Fire,22.4703,88.2614,Available
+P251,Police,22.5174,88.4479,Busy
+F252,Fire,22.5966,88.4075,Available
+F253,Fire,22.507,88.2746,Available
+A254,Ambulance,22.4595,88.2984,Available
+P255,Police,22.6338,88.2673,Available
+A256,Ambulance,22.6995,88.3566,Busy
+A257,Ambulance,22.564,88.2856,Available
+F258,Fire,22.5032,88.4443,Available
+P259,Police,22.6969,88.3147,Available
+P260,Police,22.5706,88.3149,Available
+A261,Ambulance,22.5589,88.3387,Maintenance
+A262,Ambulance,22.5529,88.3045,Maintenance
+P263,Police,22.4523,88.4822,Available
+A264,Ambulance,22.6638,88.3493,Available
+F265,Fire,22.5559,88.3371,Available
+F266,Fire,22.5013,88.4823,Available
+A267,Ambulance,22.565,88.4341,Busy
+F268,Fire,22.5286,88.371,Available
+A269,Ambulance,22.4665,88.3848,Available
+F270,Fire,22.4775,88.3427,Available
+P271,Police,22.5062,88.3948,Available
+F272,Fire,22.5341,88.2802,Available
+A273,Ambulance,22.5024,88.2717,Available
+P274,Police,22.562,88.445,Available
+P275,Police,22.6909,88.2878,Available
+P276,Police,22.4525,88.2552,Available
+F277,Fire,22.5085,88.3063,Available
+P278,Police,22.5188,88.3832,Available
+F279,Fire,22.5462,88.2906,Busy
+F280,Fire,22.5824,88.291,Available
+A281,Ambulance,22.674,88.2729,Busy
+F282,Fire,22.5405,88.3794,Available
+A283,Ambulance,22.4809,88.3231,Busy
+A284,Ambulance,22.5814,88.3205,Busy
+A285,Ambulance,22.5402,88.478,Busy
+F286,Fire,22.6563,88.403,Available
+A287,Ambulance,22.5841,88.3229,Busy
+F288,Fire,22.4749,88.3765,Busy
+A289,Ambulance,22.534,88.4767,Busy
+F290,Fire,22.6204,88.369,Available
+F291,Fire,22.5802,88.4617,Busy
+P292,Police,22.5768,88.3028,Available
+F293,Fire,22.5606,88.4855,Available
+F294,Fire,22.6251,88.288,Available
+A295,Ambulance,22.4533,88.3799,Busy
+P296,Police,22.4653,88.3965,Busy
+P297,Police,22.6983,88.2581,Available
+P298,Police,22.4527,88.4294,Available
+F299,Fire,22.6677,88.312,Available
+P300,Police,22.6451,88.2751,Available
+A301,Ambulance,22.6673,88.3241,Busy
+A302,Ambulance,22.5149,88.4763,Busy
+A303,Ambulance,22.6334,88.3132,Busy
+A304,Ambulance,22.6509,88.4037,Available
+A305,Ambulance,22.4543,88.4364,Available
+F306,Fire,22.4763,88.2889,Available
+A307,Ambulance,22.5287,88.3537,Busy
+P308,Police,22.6826,88.3932,Busy
+F309,Fire,22.5632,88.361,Available
+F310,Fire,22.5052,88.4615,Maintenance
+A311,Ambulance,22.584,88.2915,Maintenance
+P312,Police,22.5063,88.4,Busy
+P313,Police,22.4602,88.3237,Available
+F314,Fire,22.5455,88.3262,Available
+F315,Fire,22.6679,88.3334,Busy
+A316,Ambulance,22.4825,88.2795,Busy
+A317,Ambulance,22.6009,88.3198,Available
+P318,Police,22.4661,88.3974,Busy
+P319,Police,22.6985,88.3162,Available
+P320,Police,22.5324,88.2987,Busy
+F321,Fire,22.5317,88.3591,Available
+P322,Police,22.5327,88.2559,Available
+F323,Fire,22.6647,88.4229,Busy
+P324,Police,22.6405,88.3623,Busy
+F325,Fire,22.5527,88.3867,Busy
+F326,Fire,22.5813,88.2603,Available
+F327,Fire,22.6606,88.3552,Available
+A328,Ambulance,22.6833,88.3853,Busy
+P329,Police,22.6681,88.4032,Available
+A330,Ambulance,22.5744,88.2736,Busy
+F331,Fire,22.6589,88.4184,Busy
+F332,Fire,22.595,88.4602,Available
+A333,Ambulance,22.6865,88.3281,Available
+P334,Police,22.6959,88.404,Available
+A335,Ambulance,22.4541,88.4875,Busy
+P336,Police,22.6897,88.3917,Busy
+P337,Police,22.5439,88.338,Available
+A338,Ambulance,22.4562,88.349,Available
+F339,Fire,22.4833,88.4513,Busy
+F340,Fire,22.4669,88.4366,Busy
+F341,Fire,22.6667,88.2979,Available
+A342,Ambulance,22.6451,88.4076,Available
+P343,Police,22.4669,88.4346,Available
+A344,Ambulance,22.4988,88.2889,Available
+A345,Ambulance,22.6157,88.4847,Maintenance
+A346,Ambulance,22.6179,88.312,Available
+A347,Ambulance,22.4554,88.4353,Available
+P348,Police,22.641,88.4078,Available
+A349,Ambulance,22.5138,88.312,Busy
+A350,Ambulance,22.4975,88.3553,Busy
+F351,Fire,22.6231,88.254,Available
+A352,Ambulance,22.6321,88.4477,Maintenance
+P353,Police,22.4751,88.2501,Busy
+A354,Ambulance,22.5538,88.4319,Available
+P355,Police,22.6703,88.2582,Available
+P356,Police,22.459,88.4108,Available
+A357,Ambulance,22.4917,88.305,Available
+F358,Fire,22.4587,88.3692,Available
+A359,Ambulance,22.6017,88.2623,Maintenance
+P360,Police,22.6024,88.2834,Available
+F361,Fire,22.5643,88.3882,Busy
+A362,Ambulance,22.6231,88.309,Available
+A363,Ambulance,22.5314,88.2547,Available
+F364,Fire,22.5626,88.2759,Available
+A365,Ambulance,22.4951,88.4756,Available
+F366,Fire,22.6844,88.3735,Available
+P367,Police,22.6953,88.3927,Available
+P368,Police,22.465,88.3958,Busy
+A369,Ambulance,22.5752,88.3338,Maintenance
+A370,Ambulance,22.6724,88.4231,Maintenance
+P371,Police,22.5322,88.4556,Available
+P372,Police,22.4681,88.3567,Available
+F373,Fire,22.6144,88.4063,Maintenance
+F374,Fire,22.5089,88.2849,Busy
+A375,Ambulance,22.5268,88.3059,Busy
+F376,Fire,22.5311,88.3902,Busy
+F377,Fire,22.6478,88.2954,Available
+A378,Ambulance,22.516,88.4023,Available
+F379,Fire,22.6599,88.2741,Available
+A380,Ambulance,22.5601,88.2577,Available
+P381,Police,22.462,88.4533,Available
+F382,Fire,22.6411,88.423,Available
+A383,Ambulance,22.6276,88.4321,Maintenance
+F384,Fire,22.6649,88.2574,Available
+F385,Fire,22.4636,88.3355,Available
+A386,Ambulance,22.4714,88.4288,Available
+P387,Police,22.512,88.3641,Busy
+A388,Ambulance,22.4681,88.2928,Busy
+F389,Fire,22.5021,88.3075,Busy
+F390,Fire,22.4967,88.3697,Busy
+A391,Ambulance,22.4694,88.4924,Available
+P392,Police,22.6689,88.4901,Maintenance
+P393,Police,22.6737,88.4314,Available
+A394,Ambulance,22.4918,88.4255,Busy
+P395,Police,22.5622,88.4587,Available
+P396,Police,22.4698,88.3027,Busy
+P397,Police,22.5044,88.4214,Busy
+F398,Fire,22.6179,88.4055,Available
+A399,Ambulance,22.5061,88.4319,Available
+P400,Police,22.6079,88.4544,Available
+A401,Ambulance,22.6576,88.4278,Busy
+A402,Ambulance,22.5415,88.3842,Available
+P403,Police,22.6193,88.2884,Available
+F404,Fire,22.6517,88.4627,Busy
+A405,Ambulance,22.5952,88.2576,Available
+A406,Ambulance,22.6375,88.3247,Available
+A407,Ambulance,22.5057,88.4037,Available
+F408,Fire,22.6525,88.4568,Busy
+P409,Police,22.6923,88.3268,Available
+P410,Police,22.4713,88.341,Available
+F411,Fire,22.6016,88.3903,Busy
+A412,Ambulance,22.6458,88.3599,Busy
+F413,Fire,22.6113,88.2766,Busy
+A414,Ambulance,22.6747,88.4184,Busy
+F415,Fire,22.5158,88.4449,Available
+A416,Ambulance,22.5168,88.3259,Available
+P417,Police,22.4996,88.3286,Busy
+P418,Police,22.6589,88.3798,Available
+A419,Ambulance,22.6529,88.3257,Available
+A420,Ambulance,22.502,88.418,Busy
+P421,Police,22.6952,88.2568,Busy
+P422,Police,22.5344,88.3589,Available
+A423,Ambulance,22.5783,88.2952,Available
+A424,Ambulance,22.5029,88.3252,Available
+P425,Police,22.6091,88.2528,Busy
+F426,Fire,22.5617,88.4593,Maintenance
+P427,Police,22.5158,88.2744,Available
+F428,Fire,22.469,88.3067,Busy
+A429,Ambulance,22.5492,88.3867,Available
+F430,Fire,22.5511,88.3518,Available
+F431,Fire,22.5753,88.3011,Available
+A432,Ambulance,22.5355,88.2776,Available
+F433,Fire,22.5717,88.3597,Busy
+A434,Ambulance,22.6255,88.4718,Available
+A435,Ambulance,22.4691,88.2892,Busy
+A436,Ambulance,22.6858,88.2869,Available
+P437,Police,22.5611,88.3964,Available
+F438,Fire,22.6137,88.36,Available
+A439,Ambulance,22.5162,88.2731,Maintenance
+P440,Police,22.5754,88.3943,Maintenance
+F441,Fire,22.5401,88.4209,Available
+P442,Police,22.5394,88.3688,Busy
+F443,Fire,22.5262,88.3993,Maintenance
+F444,Fire,22.4848,88.4708,Busy
+F445,Fire,22.6787,88.3814,Busy
+P446,Police,22.5071,88.4244,Busy
+P447,Police,22.5146,88.4381,Busy
+P448,Police,22.5682,88.4883,Available
+P449,Police,22.6311,88.4537,Available
+A450,Ambulance,22.5914,88.3535,Available
+A451,Ambulance,22.4803,88.4667,Available
+A452,Ambulance,22.6302,88.314,Busy
+A453,Ambulance,22.5402,88.3487,Available
+P454,Police,22.5965,88.3047,Busy
+F455,Fire,22.4724,88.2514,Busy
+F456,Fire,22.5953,88.3474,Available
+F457,Fire,22.6407,88.4914,Busy
+A458,Ambulance,22.6695,88.4197,Available
+F459,Fire,22.5403,88.323,Available
+A460,Ambulance,22.4624,88.4612,Available
+P461,Police,22.4933,88.2564,Maintenance
+F462,Fire,22.6247,88.2609,Available
+P463,Police,22.6317,88.4654,Maintenance
+A464,Ambulance,22.4638,88.2864,Available
+A465,Ambulance,22.4747,88.3108,Busy
+A466,Ambulance,22.5428,88.4568,Available
+A467,Ambulance,22.5081,88.4407,Available
+F468,Fire,22.6236,88.4779,Busy
+A469,Ambulance,22.6938,88.3331,Available
+F470,Fire,22.6189,88.3291,Available
+A471,Ambulance,22.5588,88.3071,Busy
+F472,Fire,22.5147,88.3089,Available
+F473,Fire,22.4933,88.3417,Available
+P474,Police,22.4874,88.3861,Available
+P475,Police,22.4979,88.262,Available
+A476,Ambulance,22.6289,88.3189,Available
+A477,Ambulance,22.5929,88.4612,Available
+F478,Fire,22.5532,88.4071,Available
+F479,Fire,22.4516,88.2936,Busy
+A480,Ambulance,22.5445,88.4092,Available
+F481,Fire,22.6135,88.2809,Busy
+F482,Fire,22.4706,88.3264,Busy
+F483,Fire,22.6671,88.4996,Busy
+P484,Police,22.4529,88.2779,Busy
+A485,Ambulance,22.5562,88.4662,Available
+F486,Fire,22.5363,88.2824,Available
+P487,Police,22.5554,88.4301,Available
+F488,Fire,22.5966,88.4976,Available
+P489,Police,22.5894,88.4805,Busy
+P490,Police,22.5067,88.4725,Busy
+P491,Police,22.6586,88.4251,Available
+P492,Police,22.4747,88.3535,Busy
+A493,Ambulance,22.6028,88.4472,Available
+P494,Police,22.6903,88.2888,Busy
+F495,Fire,22.639,88.294,Available
+F496,Fire,22.5612,88.3596,Available
+F497,Fire,22.5558,88.288,Available
+P498,Police,22.577,88.3169,Available
+F499,Fire,22.5321,88.4918,Available
+P500,Police,22.6709,88.3327,Available
 
 # Incidents
 # Format: name, latitude, longitude
 
-Hospital,22.5710,88.3605
-School,22.5600,88.3520
-Mall,22.5750,88.3660
-Howrah Station,22.5830,88.3420
-Victoria Memorial,22.5448,88.3425
+Hospital 1,22.5711,88.406
+Office Building 2,22.4981,88.2624
+Station 3,22.6628,88.302
+Station 4,22.6963,88.4116
+Station 5,22.6029,88.4643
+Residential Area 6,22.6695,88.2657
+Highway 7,22.5857,88.3029
+Station 8,22.6946,88.3756
+School 9,22.488,88.4629
+Highway 10,22.476,88.3109
+Hospital 11,22.6205,88.4523
+Market 12,22.6944,88.4202
+Office Building 13,22.589,88.4667
+Station 14,22.5275,88.385
+Mall 15,22.6407,88.4231
+Highway 16,22.538,88.3045
+Residential Area 17,22.5323,88.3081
+School 18,22.6304,88.4516
+School 19,22.4553,88.4137
+Hospital 20,22.5424,88.2833
+Hospital 21,22.6108,88.3399
+School 22,22.4865,88.296
+Market 23,22.5239,88.4108
+Office Building 24,22.5093,88.497
+Highway 25,22.5503,88.3979
+Market 26,22.5435,88.4083
+Station 27,22.6187,88.4098
+School 28,22.6872,88.3123
+Mall 29,22.4726,88.4571
+Station 30,22.6413,88.3151
+Mall 31,22.632,88.2826
+Hospital 32,22.4766,88.3836
+Market 33,22.5926,88.3703
+Station 34,22.6273,88.4865
+Mall 35,22.4529,88.4029
+Mall 36,22.4681,88.4463
+Market 37,22.6573,88.3693
+School 38,22.4815,88.4311
+Highway 39,22.5412,88.3435
+Hospital 40,22.5446,88.4136
+Hospital 41,22.6326,88.4081
+Station 42,22.4601,88.346
+Station 43,22.6534,88.447
+Hospital 44,22.6226,88.4633
+Station 45,22.5697,88.4674
+Highway 46,22.5384,88.3303
+Mall 47,22.6958,88.3793
+Residential Area 48,22.494,88.259
+Market 49,22.6275,88.2819
+Market 50,22.4793,88.4494

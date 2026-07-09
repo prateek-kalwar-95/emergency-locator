@@ -2,7 +2,7 @@ from django.db import transaction
 from django.utils import timezone
 from typing import Tuple, Dict, Any, List
 
-from locator.models import ServiceUnit, Incident
+from locator.models import ServiceUnit, Incident, SearchHistory
 from locator.parser import parse_dataset, ParseError
 from locator.algorithms import find_nearest_unit
 
@@ -148,6 +148,14 @@ def get_nearest_unit_for_incident(
         "Police": "Police Unit"
     }
     unit_type_display = friendly_type_names.get(nearest_unit.unit_type, nearest_unit.unit_type)
+
+    # Save to search history
+    SearchHistory.objects.create(
+        incident_lat=lat,
+        incident_lon=lon,
+        assigned_unit=nearest_unit,
+        distance_km=distance
+    )
 
     return {
         "unit_id": nearest_unit.unit_id,
