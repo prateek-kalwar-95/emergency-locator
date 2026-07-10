@@ -13,16 +13,20 @@ A Django web application designed to help emergency dispatch centers instantly i
 
 ## Installation & Setup
 
-Ensure you have Python 3.12+ installed. Run the following commands:
+Ensure you have Python 3.12+ installed. Run the following commands from the project root (where `manage.py` is located):
 
-1. **Install dependencies:**
+1. **Create and activate a virtual environment (Recommended):**
    ```bash
-   pip install -r requirements.txt
+   python -m venv venv
+   # On Windows:
+   venv\Scripts\activate
+   # On macOS/Linux:
+   source venv/bin/activate
    ```
 
-2. **Navigate to the project root:**
+2. **Install dependencies:**
    ```bash
-   cd EmergencyLocator
+   pip install -r requirements.txt
    ```
 
 3. **Apply database migrations:**
